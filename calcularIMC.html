@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+  , initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function click_calcular() {
+            let peso = document.getElementById("peso").value;
+            let altura = document.getElementById("altura").value;
+            if (peso == "") {
+                alert("Informe o valor A");
+            } else if (altura == "") {
+                alert("Informe o valor B");
+            } else {
+                let calculo = Number(peso) / Number(altura * altura);
+                document.getElementById("txtCalculo").value = calculo.toFixed(2);
+                if(calculo < 18.5){
+                    document.getElementById("txtClass").value = "abaixo do peso!"
+                }
+                else if(calculo < 24.9){
+                    document.getElementById("txtClass").value = "Peso normal"
+                }
+                else if(calculo < 29.9){
+                    document.getElementById("txtClass").value = "Acima do peso"
+                }
+                else if(calculo < 34.9){
+                    document.getElementById("txtClass").value = "Obesidade grau I"
+                }
+                else if(calculo > 39.9){
+                    document.getElementById("txtClass").value = "Obesidade grau II"
+                }
+                else{
+                    document.getElementById("txtClass").value = "Obesidade grau III(mórbida)"
+                }
+            }
+        }
+
+        function click_limpar() {
+            document.getElementById("peso").value = "";
+            document.getElementById("altura").value = "";
+            document.getElementById("txtCalculo").value = "";
+            document.getElementById("txtClass").value = "";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <form action="">
+            <fieldset>
+                <legend><b>Fórmulário para calcular seu IMC</b></legend>
+                <br>
+                <div class="inputBox">
+                    <input type="number" name="" id="peso" class="inputUser" required>
+                    <label for="peso" class="labelInput">Peso</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="number" name="" id="altura" class="inputUser" required>
+                    <label for="altura" class="labelInput">Altura</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <label for="txtCalculo" class="labelIMC">IMC</label>
+                    <br>
+                    <input type="number" name="" class="inputIMC" id="txtCalculo" disabled>
+                </div>
+                <br>
+                <div class="inputBox">
+                    <label for="txtClass" class="labelIMC">Classificação</label>
+                    <br>
+                    <br>
+                    <input type="text" name="" id="txtClass" disabled class="inputIMC">
+                </div>
+                <br>
+                <div class="inputBox">
+                    <input type="button" value="CalcularIMC" onclick="click_calcular();" id="submit" class="submitCalc">
+                </div>
+                <div class="inputBox">
+                    <input type="button" value="Limpar" onclick="click_limpar();" id="submit" class="submitLimp">
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>
